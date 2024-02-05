@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckiiiflol4tbn"]
+
+[ext_resource type="Script" path="res://Prefabs/player.gd" id="1_3w3k7"]
+
+[sub_resource type="Gradient" id="Gradient_io01m"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kr4bn"]
+gradient = SubResource("Gradient_io01m")
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_3w3k7")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.231373, 0.231373, 1)
+texture = SubResource("GradientTexture2D_kr4bn")

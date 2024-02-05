@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkynf4aphwdv"]
+
+[ext_resource type="PackedScene" uid="uid://ckiiiflol4tbn" path="res://Prefabs/player.tscn" id="1_fun4l"]
+
+[sub_resource type="Gradient" id="Gradient_ucwj2"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_teyqd"]
+gradient = SubResource("Gradient_ucwj2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc3am"]
+
+[node name="Node" type="Node"]
+
+[node name="Platform" type="Sprite2D" parent="."]
+modulate = Color(0.45098, 0.45098, 0.45098, 1)
+position = Vector2(600, 600)
+scale = Vector2(17.153, 1)
+texture = SubResource("GradientTexture2D_teyqd")
+
+[node name="Area2D" type="Area2D" parent="Platform"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Area2D"]
+scale = Vector2(-3.25709, -3.28108)
+shape = SubResource("RectangleShape2D_dc3am")
+
+[node name="Player" parent="." instance=ExtResource("1_fun4l")]
+position = Vector2(600, 535)
