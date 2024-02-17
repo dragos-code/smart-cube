@@ -15,3 +15,15 @@ script = ExtResource("1_3w3k7")
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0.231373, 0.231373, 1)
 texture = SubResource("GradientTexture2D_kr4bn")
+
+[node name="RightRay" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-100, 0)
+collide_with_areas = true
+
+[node name="GroundCheck" type="RayCast2D" parent="."]
+target_position = Vector2(0, 40)
+collide_with_areas = true
