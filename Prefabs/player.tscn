@@ -1,6 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckiiiflol4tbn"]
+[gd_scene load_steps=11 format=3 uid="uid://ckiiiflol4tbn"]
 
-[ext_resource type="Script" path="res://Prefabs/player.gd" id="1_3w3k7"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_or7fy"]
+[ext_resource type="Script" path="res://Prefabs/StateMachine.gd" id="2_qgove"]
+[ext_resource type="Script" path="res://Prefabs/FallingState.gd" id="3_03l10"]
+[ext_resource type="Script" path="res://Prefabs/IdleState.gd" id="3_7pjid"]
+[ext_resource type="Script" path="res://Prefabs/MoveState.gd" id="4_ikktg"]
+[ext_resource type="Script" path="res://Prefabs/AbsorbState.gd" id="5_co4hv"]
+[ext_resource type="Script" path="res://Prefabs/DeathState.gd" id="6_mm071"]
+[ext_resource type="Script" path="res://Prefabs/JumpingState.gd" id="7_w2qvn"]
 
 [sub_resource type="Gradient" id="Gradient_io01m"]
 offsets = PackedFloat32Array(0)
@@ -10,7 +17,7 @@ colors = PackedColorArray(1, 1, 1, 1)
 gradient = SubResource("Gradient_io01m")
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_3w3k7")
+script = ExtResource("1_or7fy")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0.231373, 0.231373, 1)
@@ -27,3 +34,25 @@ collide_with_areas = true
 [node name="GroundCheck" type="RayCast2D" parent="."]
 target_position = Vector2(0, 40)
 collide_with_areas = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("2_qgove")
+current_state = NodePath("IdleState")
+
+[node name="FallingState" type="Node" parent="StateMachine"]
+script = ExtResource("3_03l10")
+
+[node name="MoveState" type="Node" parent="StateMachine"]
+script = ExtResource("4_ikktg")
+
+[node name="AbsorbState" type="Node" parent="StateMachine"]
+script = ExtResource("5_co4hv")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("6_mm071")
+
+[node name="JumpingState" type="Node" parent="StateMachine"]
+script = ExtResource("7_w2qvn")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_7pjid")

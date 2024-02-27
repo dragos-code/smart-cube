@@ -1,3 +1,5 @@
+class_name Player
+
 extends Node2D
 
 var grid_size = 128 # Size of the grid step
